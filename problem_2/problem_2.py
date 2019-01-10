@@ -1,15 +1,9 @@
-import os
+import pathlib
 from itertools import cycle
 
 def get_data():
-    home_dir = os.path.expanduser('~')
-    input_path = f'{home_dir}/code/advent-of-code/problem_2/input.txt'
-    data = []
-    with open(input_path, 'r') as f:
-        for line in f:
-            data.append(int(line))
-
-    return data
+    input_path = pathlib.Path(__file__).resolve().parent / 'input.txt'
+    return [int(line) for line in input_path.open()]
 
 def find_repeated_frequency(data):
     freqs = set()

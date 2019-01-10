@@ -1,8 +1,7 @@
-import os
+import pathlib
 
 def sum_lines():
-    home_dir = os.path.expanduser('~')
-    input_path = f'{home_dir}/code/advent-of-code/problem_1/input.txt'
+    input_path = pathlib.Path(__file__).resolve().parent / 'input.txt'
     total = 0
     with open(input_path, 'r') as f:
         for line in f:
