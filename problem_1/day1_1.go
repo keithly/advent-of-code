@@ -11,7 +11,7 @@ import (
 func main() {
 	b, err := os.Open("./input.txt")
 	if err != nil {
-		fmt.Print(err)
+		log.Fatalln(err)
 	}
 
 	defer b.Close()
@@ -19,7 +19,10 @@ func main() {
 	scanner := bufio.NewScanner(b)
 	for scanner.Scan() {
 		row := scanner.Text()
-		num, _ := strconv.Atoi(row)
+		num, err := strconv.Atoi(row)
+		if err != nil {
+			log.Fatalln(err)
+		}
 		total += num
 	}
 
